@@ -1,0 +1,63 @@
+﻿@model List<Category>
+@inject Microsoft.Extensions.Options.IOptions<TinyMCEConfig> TinyMCEConfig
+
+<div class="container new-index mt-5 dark-theme">
+    <h2 class="text-center mb-4">Добавить заметку</h2>
+
+    <!-- Меню категорий -->
+    <div class="categories-menu mb-4">
+         <ul class="nav nav-pills justify-content-center">
+              @foreach (var category in Model)
+              {
+                  <li class="nav-item">
+                      <a class="nav-link" href="@Url.Action("ViewNotes", new { categoryId = category.Id })">
+                          @category.Name
+                      </a>
+                  </li>
+              }
+              <!-- Добавляем ссылку на страницу со всеми заметками -->
+              <li class="nav-item">
+                  <a class="nav-link" href="@Url.Action("MyNotes", "Home")">Мои заметки</a>
+              </li>
+         </ul>
+         <form class="create-category-form mt-3 d-flex justify-content-center" method="post" asp-action="CreateCategory">
+              <div class="input-group w-50">
+                  <input type="text" name="name" class="form-control" placeholder="Новая категория">
+                  <button class="btn btn-outline-secondary" type="submit">Создать</button>
+              </div>
+         </form>
+    </div>
+
+    <!-- Редактор заметок -->
+    <div class="note-editor">
+         <h3 class="mb-3">Добавить новую заметку</h3>
+         <form method="post" asp-action="AddNote">
+              <div class="mb-3">
+                  <label for="categorySelect" class="form-label">Выберите категорию</label>
+                  <select id="categorySelect" name="categoryId" class="form-select">
+                      @foreach (var category in Model)
+                      {
+                          <option value="@category.Id">@category.Name</option>
+                      }
+                  </select>
+              </div>
+              <div class="mb-3">
+                  <label for="editor" class="form-label">Содержание заметки</label>
+                  <textarea id="editor" name="content" class="form-control" rows="6"></textarea>
+              </div>
+              <button type="submit" class="btn btn-success">Сохранить заметку</button>
+         </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.tiny.cloud/1/@TinyMCEConfig.Value.ApiKey/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#editor',
+            plugins: 'lists link image',
+            toolbar: 'undo redo | bold italic underline | bullist numlist | link image',
+            menubar: false
+        });
+    </script>
+}

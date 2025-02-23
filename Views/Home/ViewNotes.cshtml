@@ -1,0 +1,30 @@
+﻿@model Category
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+         <h2>Заметки категории: @Model.Name</h2>
+         <form asp-action="DeleteCategory" method="post">
+             <input type="hidden" name="categoryId" value="@Model.Id" />
+             <button type="submit" class="btn btn-danger">Удалить категорию</button>
+         </form>
+    </div>
+    <div class="notes-list row">
+         @foreach (var note in Model.Notes)
+         {
+             <div class="col-md-6 mb-4">
+                 <div class="card h-100">
+                     <div class="card-body">
+                         <h5 class="card-title">Заметка @note.Id</h5>
+                         <p class="card-text">@Html.Raw(note.Content)</p>
+                     </div>
+                     <div class="card-footer bg-transparent border-top-0">
+                         <form asp-action="DeleteNote" method="post" class="d-inline">
+                             <input type="hidden" name="noteId" value="@note.Id" />
+                             <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
+                         </form>
+                     </div>
+                 </div>
+             </div>
+         }
+    </div>
+</div>

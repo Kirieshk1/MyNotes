@@ -1,0 +1,31 @@
+/* light-theme.css */
+.light-theme {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+.light-theme .card {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+}
+
+.light-theme .card-header,
+.light-theme .card-footer {
+  background-color: #e9ecef;
+}
+
+.light-theme .form-control,
+.light-theme .form-select {
+  background-color: #ffffff;
+  color: #212529;
+  border: 1px solid #ced4da;
+}
+
+.light-theme .btn-success {
+  background-color: #28a745;
+  border-color: #218838;
+}
+
+.light-theme a.nav-link {
+  color: #212529;
+}

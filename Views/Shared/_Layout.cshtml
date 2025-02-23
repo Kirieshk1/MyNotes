@@ -1,0 +1,67 @@
+﻿@{
+    // Получаем значение куки "SiteTheme". Если не задано, по умолчанию "dark".
+    var theme = Context.Request.Cookies["SiteTheme"] ?? "dark";
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyNotes</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @* Подключаем нужный CSS-файл в зависимости от выбранной темы *@
+    @if (theme == "dark")
+    {
+        <link rel="stylesheet" href="~/css/dark-theme.css" asp-append-version="true" />
+    }
+    else
+    {
+        <link rel="stylesheet" href="~/css/light-theme.css" asp-append-version="true" />
+    }
+</head>
+<body class="@(theme == "dark" ? "dark-theme" : "light-theme")">
+    <header class="bg-dark text-white p-3">
+        <div class="container">
+            <h1 class="m-0">MyNotes</h1>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary shadow-sm">
+      <div class="container">
+         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Переключить навигацию">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarContent">
+           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+             <li class="nav-item">
+               <a class="nav-link" asp-controller="Home" asp-action="Index">Добавить заметку</a>
+             </li>
+             <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="MyNotes">Мои заметки</a>
+             </li>
+           </ul>
+           @* Ссылки для переключения темы *@
+           <ul class="navbar-nav ms-auto">
+               <li class="nav-item">
+                   <a class="nav-link" asp-controller="Home" asp-action="SetTheme" asp-route-theme="light">Светлая тема</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" asp-controller="Home" asp-action="SetTheme" asp-route-theme="dark">Тёмная тема</a>
+               </li>
+           </ul>
+         </div>
+      </div>
+    </nav>
+    <div class="main-content container mt-4">
+        @RenderBody()
+    </div>
+    <footer class="bg-secondary text-center text-white p-3 mt-5 border-top">
+        <div class="container">
+            <span>&copy; @(DateTime.Now.Year) MyNotes. Все права защищены.</span>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

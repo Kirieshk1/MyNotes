@@ -1,0 +1,19 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Ошибка";
+}
+<div class="error-container container mt-5">
+    <div class="alert alert-danger" role="alert">
+         <h4 class="alert-heading">Произошла ошибка</h4>
+         <p>К сожалению, ваш запрос не может быть обработан.</p>
+         @if (Model.ShowRequestId)
+         {
+             <hr>
+             <p class="mb-0">ID запроса: <strong>@Model.RequestId</strong></p>
+         }
+    </div>
+    <div class="error-details">
+         <p>@Model.ErrorMessage</p>
+    </div>
+    <p class="text-muted">Если ошибка повторяется, свяжитесь с поддержкой.</p>
+</div>

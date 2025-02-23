@@ -1,0 +1,22 @@
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Ошибка";
+}
+<div class="error-page container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-danger text-white">
+      <h1 class="h4 m-0">Произошла ошибка</h1>
+    </div>
+    <div class="card-body">
+      <p>К сожалению, произошла непредвиденная ошибка при обработке вашего запроса.</p>
+      @if (Model.ShowRequestId)
+      {
+          <p><strong>ID запроса:</strong> <code>@Model.RequestId</code></p>
+      }
+      <div class="error-details mt-3">
+          <h5 class="mb-2">Подробности:</h5>
+          <p>@Model.ErrorMessage</p>
+      </div>
+    </div>
+  </div>
+</div>

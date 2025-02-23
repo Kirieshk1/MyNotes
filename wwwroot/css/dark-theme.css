@@ -1,0 +1,32 @@
+/* dark-theme.css */
+.dark-theme {
+    background-color: #1e1e1e;
+    color: #cfcfcf;
+  }
+  
+  .dark-theme .card {
+    background-color: #2e2e2e;
+    border: 1px solid #444;
+  }
+  
+  .dark-theme .card-header,
+  .dark-theme .card-footer {
+    background-color: #262626;
+  }
+  
+  .dark-theme .form-control,
+  .dark-theme .form-select {
+    background-color: #333;
+    color: #cfcfcf;
+    border: 1px solid #555;
+  }
+  
+  .dark-theme .btn-success {
+    background-color: #3a9d23;
+    border-color: #33891c;
+  }
+  
+  .dark-theme a.nav-link {
+    color: #cfcfcf;
+  }
+  

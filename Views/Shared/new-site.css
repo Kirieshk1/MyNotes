@@ -1,0 +1,54 @@
+/* new-site.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding-bottom: 60px; /* резерв под footer */
+  }
+  
+  header {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: #fff;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+  }
+  
+  .navbar {
+    margin-bottom: 1rem;
+  }
+  
+  .categories-menu ul.nav-pills li.nav-item a.nav-link {
+    margin: 0 5px;
+    border-radius: 50px;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .categories-menu ul.nav-pills li.nav-item a.nav-link:hover,
+  .categories-menu ul.nav-pills li.nav-item a.nav-link.active {
+    background-color: #2575fc;
+    color: #fff;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+  
+  .card-header {
+    border-bottom: none;
+  }
+  
+  footer {
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  

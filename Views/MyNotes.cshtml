@@ -1,0 +1,32 @@
+@model List<Note>
+@{
+    ViewData["Title"] = "Мои заметки";
+}
+
+<div class="container mt-5 dark-theme">
+    <h2 class="mb-4">Все заметки</h2>
+    <div class="notes-list">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var note in Model)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Заметка @note.Id</h5>
+                        <p class="card-text">@Html.Raw(note.Content)</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <form asp-action="DeleteNote" method="post" class="d-inline">
+                            <input type="hidden" name="noteId" value="@note.Id" />
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Заметки отсутствуют.</p>
+        }
+    </div>
+</div>
